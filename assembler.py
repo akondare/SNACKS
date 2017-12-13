@@ -4,7 +4,7 @@ infile = open(sys.argv[1])
 # initialize empty outfile and append new machine lines of machine code
 outfile = open(sys.argv[2],'w')
 outfile.write('')
-outfile = open(sys.argv[2],'a')
+outfile = open('./verilog/'+sys.argv[2],'a')
 
 func = { 'clr' : '0000',	
          'add' : '0001',	
