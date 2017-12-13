@@ -1,0 +1,188 @@
+# Load MSB's and LSB's of int into R2 and R3
+Assign 0
+Ld R2
+Assign 1
+Ld R3
+
+# Extract sign bit
+Assign R2
+Set R4
+Assign 7
+Sr R4
+Sl R4
+	
+#### Get Exponent ####
+
+# Start Exponent at max value of 29
+Assign 29
+Set R5
+
+# Clear sign bit of int
+Assign 1
+Sl R2
+Sr R2
+	
+# if int is equal to 0: return 0x0000 as float 
+Assign 8 
+BNZ R2
+
+Clr R6
+Clr R7
+Assign 5
+St R6
+Assign 6
+St R7
+
+HALT
+
+# if MSB[6] == 0 : shift left by 1 and decrement exponent(r5) 
+Assign R2
+Set R6
+Assign 6
+Sr R6
+
+Assign 13
+BNZ R6
+	
+### MSB[6] == 0 :
+
+## shift int(r2 and r3) left by 1
+
+# Copy r3 into r7
+Assign R3
+Set R7
+
+# shift r2 and r3
+Assign 1
+Sl R2
+Sl R3
+
+# get msb of r3 into r8
+Assign 7
+Sr R8
+
+# put msb of r3 into lsb of r2
+Assign R8
+Or R2
+
+# decrement exponent
+Dec R5
+
+# continue loop
+Assign 17
+Jump R0 
+
+#### Get U,R,and S bits ####
+
+# Copy R3 into R6,R7,and R8
+Assign R3
+Set R6
+Set R7
+Set R9
+
+# extract U and R bits
+Assign 4
+Sr R6
+Assign 3
+Sr R7
+Assign 1
+And R6
+And R7
+
+# get bits below rounding bit 
+Assign 5
+Sl R9
+
+# if R9 == 0: R8=0 ? R8=1
+Clear R8
+Assign 3
+BZ R9
+Assign 1
+Set R8
+
+#### Rounding Logic ####
+
+# branch if rounding bit(R7) is not 1
+Assign 8
+BZ R7
+
+# branch if neither U nor S is 1 (add them together and check bz)
+Assign R7
+Add R6
+Assign 4
+BZ R6
+	
+# add 8 (1 to the 4th LSB Bit to Round)
+Assign 8
+Add R3 
+Adc R2 
+
+#### Overflow Logic ####
+
+# if MSB[7](r6) == 1 : shift right by 1 and inc exp 
+Assign R2
+Set R6
+Assign 7
+Sr R6
+Assign 11
+BZ R6 
+
+# copy R2 to R6
+Assign R2
+Set R6
+
+# shift int(r2 and r3) by 1
+Assign 1
+Sr R2
+Sr R3
+
+# extract lsb of MSB bits
+Assign 7
+Sl R6
+
+# assign msb of LSB bits to lsb of MSB bits 
+Assign R6
+Or R3
+
+# increment exponent
+Inc R5
+
+#### Set Final Float ####
+
+# get R2[3:0] and R3[7:4] into R7 
+Assign R2
+Set R7
+Assign R3
+Set R8
+Assign 4
+Sl R7
+Sr R8
+Assign R8
+Or R7
+	
+# get exp bits in spots 6:2 of R5
+Assign 2
+Sl R5 
+
+# get 2-msb's after hidden(R2[5:4]) into spots 1:0
+Assign 2
+Sl R2
+Assign 6
+Sr R2
+
+# get sign + exp + mantissa[9:8] into r6
+Clear R6
+Assign R4
+Or R6
+Assign R5
+Or R6
+Assign R2
+Or R6
+
+# store R6 and R7 into Mem[5] and Mem[6]
+Assign 5
+St R6
+Assign 6
+St R7
+
+HALT

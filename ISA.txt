@@ -1,0 +1,31 @@
+opcodes =  assign : 0
+	   func   : 1 
+func =  'clr' : '0000'	
+        'add' : '0001'
+        'sub' : '0010'
+        'and' : '0011'
+        'or'  : '0100'
+        'ld'  : '0101'
+        'st'  : '0110'
+        'sl'  : '0111'
+        'sr'  : '1000'
+        'set' : '1001'
+        'bz'  : '1010'
+        'bnz' : '1011'
+        'inc' : '1100'
+        'dec' : '1101'
+        'jmp' : '1110'
+        'adc' : '1111' 
+
+Registers : 
+	r0 : zero register
+	r1 : assign register
+	r2-15: general purpose registers
+
+Instruction Formats:
+	A : OPCODE[0] + IMMED/REG1
+	B : OPCODE[1] + FUNC + REG2
+
+	clr : B
+	rest: A => B : REG2 <= Func(Reg2,Reg1)
+	halt: All 1's as adc to 15 is disallowed 

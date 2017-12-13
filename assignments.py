@@ -1,0 +1,16 @@
+# R0 = Zero Register
+# R1 = Assign Register
+# R2 = MSB without sign
+# R3 = LSB
+# R4 = Sign Bit
+# R5 = Exponent
+# R6 = MSB[6],U bit, MSB[7]
+# R7 = 
+# R8 = 
+# R9 = 
+# R10 = 
+# R11 = 
+# R12 = 
+# R13 = 
+# R14 = 
+# R15 = 

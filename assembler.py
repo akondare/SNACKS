@@ -1,122 +1,104 @@
 import sys
 infile = open(sys.argv[1])
 
-# initialize empty midfile and append new machine lines of machine code
-midfile = open(sys.argv[2],'w')
-midfile.write('')
-midfile = open(sys.argv[2],'a')
+# initialize empty outfile and append new machine lines of machine code
+outfile = open(sys.argv[2],'w')
+outfile.write('')
+outfile = open(sys.argv[2],'a')
 
-func = { 'clear' : '0000',
-         'add' : '0001',
+func = { 'clr' : '0000',	
+         'add' : '0001',	
          'sub' : '0010',
          'and' : '0011',
-         'or' : '0100',
-         'xor' : '0101',
-         'addi' : '0110',
-         'load' : '0111',
-         'str' : '1000',
-         'mod' : '1001',
-         'sll' : '1010',
-         'sra' : '1011',
-         'srl' : '1100',
-         'set' : '1101',
-         'bz' : '1110',
-         'bn' : '1111' }
+         'or'  : '0100',
+         'ld'  : '0101',
+         'st'  : '0110',
+         'sl'  : '0111',
+         'sr'  : '1000',
+         'set' : '1001',
+         'bz'  : '1010',
+         'bnz' : '1011',
+         'inc' : '1100',
+         'dec' : '1101',
+         'jmp' : '1110',
+         'adc' : '1111' }
 
-def twos(bits,value,signed,i):
-    if signed:
-        size = -(2**(bits-1)) <= value < (2**(bits-1))
-    else:
-        size = 0 <= value < (2**bits)
-
-    if not size:
-        print("Value is out of bounds for bits on line " + str(i))
+# get binary value of int in specified number of bits if possible
+def twos(bits,value,i):
+    if not (0 <= value < (2**bits)):
+        print("Value is out of bounds for bits on line " + str(i+1))
 
     s = bin(value)
-    if s[:2] == '0b':
-        return s[2:].zfill(bits)
-    else:
-        value = ( 1<<bits ) + value
-        formatstring = '{:0%ib}' % bits
-        return formatstring.format(value).zfill(bits)
-
-bits = ''
+    return s[2:].zfill(bits)
 
 for i,l in iter(enumerate(infile)):
+
+    # empty lines and comments are ignored 
+    if l == '' or l[0] == '#':
+        continue
+
+    # start parsing line of assembly code
     line = ''
     inst = l.lower().split()
 
+    # all 1's is halt as adc r15 is not allowed
+    if inst[0] == 'halt':
+        outfile.write('111111111\n')
+        continue
+
+    # all instructions have opcode followed by reg/immed
+    if len(inst) != 2:
+        print("Incorrect # of arguments for func on line " + str(i+1))
+        continue
+
+    # is instruction a func or assign call
     if inst[0] == 'assign':
-        arg1 = ''
-        arg2 = ''
-        if len(inst) == 3:
-            try:
-                arg1 = twos(4,int(inst[1]),False,i)
-            except ValueError:
-                print("RD for FUNC call on line " + str(i) + " is not valid")
-
-            if inst[2][:2] == '0x':
-                try:
-                    arg2 = twos(4,int(inst[2],16),True,i)
-                except ValueError:
-                    print("IMM for FUNC call on line " + str(i) + " is not valid")
-            else : 
-                try:
-                    arg2 = twos(4,int(inst[2]),False,i)
-                except ValueError:
-                    print("RD for FUNC call on line " + str(i) + " is not valid")
-
-        elif len(inst) == 2:
-            try:
-                arg1 = twos(8,int(inst[1],16),True,i)
-            except ValueError:
-                print("IMM for FUNC call on line " + str(i) + " is not valid")
-        else:
-            print("Not enough arguments for assign on line " + str(i))
-
-        line = line+'0'+arg1+arg2
-
+        line += '0'
     else:
-        if len(inst) != 2:
-            print("Incorrect # of arguments for func on line " + str(i))
+        line += '1'
 
-        if inst[1][:2] == '0x':
-            try:
-                val = twos(4,int(inst[1],16),True,i)
-            except ValueError:
-                print("IMM for FUNC call on line " + str(i) + " is not valid")
-        else : 
-            try:
-                val = twos(4,int(inst[1]),False,i)
-            except ValueError:
-                print("RD for FUNC call on line " + str(i) + " is not valid")
+    # assign case
+    if line[0] == '0':
+        # is reg or immed being assigned
+        if inst[1][0] == 'r':
+            line += '0'
+            val = inst[1][1:]
+        else:
+            line += '1'
+            val = inst[1]
 
-        line = line+'1'+func[inst[0]]+val
+        try:
+            base = 10
+            line += twos(7,int(val,base),i)
+        except Exception:
+            print("Assign instr. on line " + val + " is invalid")
 
+    # func case
+    else:
+        # add func code 
+        try:
+            line += func[inst[0]]
+        except Exception:
+            print("Func code " + inst[0] + " on line " + str(i+1) + " is invalid")
+
+        # check syntax
+        if inst[1][0] != 'r':
+            print("Func reg is in invalid format on line " + str(i+1) )
+            continue
+
+
+        # add reg-dest index
+        base = 10
+        val = inst[1][1:]
+        try:
+            line += twos(4,int(val,base),i)
+        except Exception:
+            print("Func reg/immed " + val + " on line " + str(i+1) + " is invalid")
+            #print("inst 0 : " + inst[0])
+            #print("inst 1 : " + inst[1])
     
-    
-    midfile.write(line+'\n')
-    bits = bits + line
+    # write to outfile
+    outfile.write(line+'\n')
 
-midfile.close()
-infile.close()
-
-midfile = open(sys.argv[2])
-
-# initialize empty outfile and append new machine lines of machine code
-outfile = open(sys.argv[3],'w')
-outfile.write('')
-outfile = open(sys.argv[3],'wb')
-
-bits = bits + ('0'*abs(len(bits)%(-8)))
-
-listOfInts = []
-for i in range(int(len(bits)/8)):
-    listOfInts.append(int(bits[(i*8):((i+1)*8)],2))
-
-by = bytes(listOfInts)
-
-outfile.write(by)
 outfile.close()
-
-
+infile.close()
