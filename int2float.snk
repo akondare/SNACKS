@@ -70,7 +70,7 @@ Dec R5
 
 # continue loop
 Assign 17
-Jump R0 
+Jmp R0 
 
 #### Get U,R,and S bits ####
 
@@ -94,7 +94,7 @@ Assign 5
 Sl R9
 
 # if R9 == 0: R8=0 ? R8=1
-Clear R8
+Clr R8
 Assign 3
 BZ R9
 Assign 1
@@ -171,7 +171,7 @@ Assign 6
 Sr R2
 
 # get sign + exp + mantissa[9:8] into r6
-Clear R6
+Clr R6
 Assign R4
 Or R6
 Assign R5

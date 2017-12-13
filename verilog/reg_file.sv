@@ -17,7 +17,6 @@ module reg_file #(parameter raw = 4)
     input   [raw-1:0]  rt_addr_i	 ,	  // read pointer rt
     input              wen_i		 ,	  // write enable
     input        [7:0] write_data_i	 ,	  // data to be written/loaded 
-    input              func_i        ,    // reg/immed is being loaded
 	output logic [7:0] rs_val_o	     ,	  // data read out of reg file
     output logic [7:0] rt_val_o
                 );
@@ -31,10 +30,7 @@ assign rs_val_o = RF [1];                 // RS = value from last assign instruc
 // synchronous (clocked) write to selected RF content "bin"
 always_ff @ (posedge clk)
   if (wen_i) 
-    if (func_i)
-	    RF [rt_addr_i] <= write_data_i;
-    else 
-	    RF [1] <= write_data_i;
+    RF [rt_addr_i] <= write_data_i;
 
 endmodule
 
