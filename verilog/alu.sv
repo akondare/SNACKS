@@ -11,7 +11,6 @@ module alu (input  [7:0]           rs_i ,  // operand s
 // cast opcode to enum from definitions.sv
 op_code    op3; 	     
 assign op3 = op_code'(op_i);
-logic [7:0] zero = 8'h00;
 
 // alu execution is fully combinational 
 always_comb								  							// no registers, no clocks

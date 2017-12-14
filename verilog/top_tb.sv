@@ -16,8 +16,8 @@ always begin
 end
 
 initial begin
-  t1.rf1 = '{default:8'b00}
-  t1.dm1 = '{default:8'b00}
+  t1.dm1.my_memory[0] = 8'b00111111;
+  t1.dm1.my_memory[1] = 8'b00111111;
 
   #20ns reset = 0;
   #5000ns $display("I give up."); 

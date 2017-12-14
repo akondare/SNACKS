@@ -1,0 +1,323 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dE:/Project
+valu
+Z1 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z2 DXx4 work 11 definitions 0 22 VmRWfS;0`eWoD]dUEMSEG2
+DXx4 work 11 alu_sv_unit 0 22 fWga<R0keV?zk11imCIGW3
+Z3 VDg1SIo80bB@j0V0VzS_@n1
+r1
+!s85 0
+31
+!i10b 1
+!s100 fKZD@:_Y@K^2;o`T6Nef=1
+I0DE07mZ5>?Nbd4_7kb?610
+!s105 alu_sv_unit
+S1
+R0
+Z4 w1513284303
+Z5 8E:/Project/alu.sv
+Z6 FE:/Project/alu.sv
+L0 3
+Z7 OV;L;10.5b;63
+Z8 !s108 1513287223.000000
+Z9 !s107 E:/Project/alu.sv|
+Z10 !s90 -reportprogress|300|-work|work|E:/Project/alu.sv|
+!i113 1
+Z11 o-work work
+Z12 tCvgOpt 0
+Xalu_sv_unit
+R1
+R2
+VfWga<R0keV?zk11imCIGW3
+r1
+!s85 0
+31
+!i10b 1
+!s100 Ni?LHocCBzUk_C>9g2PMl3
+IfWga<R0keV?zk11imCIGW3
+!i103 1
+S1
+R0
+R4
+R5
+R6
+L0 1
+R7
+R8
+R9
+R10
+!i113 1
+R11
+R12
+vdata_mem
+R1
+Z13 !s110 1513287223
+!i10b 1
+!s100 Po5eC27LLCY0zOJzjB2eQ3
+I`Gb1Y?>TJZDhMR<I^4[WT0
+R3
+!s105 data_mem_sv_unit
+S1
+R0
+w1513285965
+8E:/Project/data_mem.sv
+FE:/Project/data_mem.sv
+L0 10
+R7
+r1
+!s85 0
+31
+R8
+!s107 E:/Project/data_mem.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/data_mem.sv|
+!i113 1
+R11
+R12
+Xdefinitions
+R1
+R13
+!i10b 1
+!s100 eNkTO<9N[hck7UVgZGKaa3
+IVmRWfS;0`eWoD]dUEMSEG2
+VVmRWfS;0`eWoD]dUEMSEG2
+S1
+R0
+Z14 w1513282763
+8E:/Project/definitions.sv
+FE:/Project/definitions.sv
+L0 2
+R7
+r1
+!s85 0
+31
+R8
+!s107 E:/Project/definitions.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/definitions.sv|
+!i113 1
+R11
+R12
+vIF
+R1
+Z15 !s110 1513287224
+!i10b 1
+!s100 6ZAWdnCkX5f6Ab@dd1hY`1
+IF?_DNS90:j?IKondYFTL03
+R3
+!s105 IF_sv_unit
+S1
+R0
+R14
+8E:/Project/IF.sv
+FE:/Project/IF.sv
+L0 7
+R7
+r1
+!s85 0
+31
+Z16 !s108 1513287224.000000
+!s107 E:/Project/IF.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/IF.sv|
+!i113 1
+R11
+R12
+n@i@f
+vInstROM
+R1
+R15
+!i10b 1
+!s100 JSdEzgdg934nGb61RA4=E2
+I:mU[6mEnB4=C^k7Im;L`b3
+R3
+!s105 InstRom_sv_unit
+S1
+R0
+w1513285294
+8E:/Project/InstRom.sv
+FE:/Project/InstRom.sv
+L0 11
+R7
+r1
+!s85 0
+31
+R16
+!s107 E:/Project/InstRom.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/InstRom.sv|
+!i113 1
+R11
+R12
+n@inst@r@o@m
+vlut
+R1
+R2
+DXx4 work 11 lut_sv_unit 0 22 c8TMd=HXAzch<h1XV>bUm1
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 FenNbmM[[P6F:Z[h@h@En2
+I0;Izm@1If9mF<X11`o]5<2
+!s105 lut_sv_unit
+S1
+R0
+Z17 w1513287021
+Z18 8E:/Project/lut.sv
+Z19 FE:/Project/lut.sv
+L0 3
+R7
+R16
+Z20 !s107 E:/Project/lut.sv|
+Z21 !s90 -reportprogress|300|-work|work|E:/Project/lut.sv|
+!i113 1
+R11
+R12
+Xlut_sv_unit
+R1
+R2
+Vc8TMd=HXAzch<h1XV>bUm1
+r1
+!s85 0
+31
+!i10b 1
+!s100 ZKV1HamWLedo5KL7?JiC@0
+Ic8TMd=HXAzch<h1XV>bUm1
+!i103 1
+S1
+R0
+R17
+R18
+R19
+L0 1
+R7
+R16
+R20
+R21
+!i113 1
+R11
+R12
+vreg_file
+R1
+R15
+!i10b 1
+!s100 QfoY<<_LX?5MTfz=6^COT2
+INZF^V^]iB8FB7O5EaUKf91
+R3
+!s105 reg_file_sv_unit
+S1
+R0
+w1513285890
+8E:/Project/reg_file.sv
+FE:/Project/reg_file.sv
+L0 15
+R7
+r1
+!s85 0
+31
+R16
+!s107 E:/Project/reg_file.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/reg_file.sv|
+!i113 1
+R11
+R12
+vschematic
+R15
+!i10b 1
+!s100 dRjQziN[Ba5h<jzz`l`LI2
+I]<S@5HgJ;GbF3n;O[B6PV3
+R3
+R0
+w1513284059
+8E:/Project/schematic.v
+FE:/Project/schematic.v
+L0 19
+R7
+r1
+!s85 0
+31
+R16
+!s107 E:/Project/schematic.v|
+!s90 -reportprogress|300|-work|work|E:/Project/schematic.v|
+!i113 1
+R11
+R12
+vtop
+R1
+R2
+DXx4 work 11 top_sv_unit 0 22 ;HiUzWVzA1IUn:f?WFi]k2
+R3
+r1
+!s85 0
+31
+!i10b 1
+!s100 Ai5C`84O`kj@;RlWAX]3Y3
+If02AE?Sn4RkPa]Il?Ym=]1
+!s105 top_sv_unit
+S1
+R0
+Z22 w1513287171
+Z23 8E:/Project/top.sv
+Z24 FE:/Project/top.sv
+L0 8
+R7
+R16
+Z25 !s107 E:/Project/top.sv|
+Z26 !s90 -reportprogress|300|-work|work|E:/Project/top.sv|
+!i113 1
+R11
+R12
+Xtop_sv_unit
+R1
+R2
+V;HiUzWVzA1IUn:f?WFi]k2
+r1
+!s85 0
+31
+!i10b 1
+!s100 5gbc^RO2R^MTQ<8>^64M83
+I;HiUzWVzA1IUn:f?WFi]k2
+!i103 1
+S1
+R0
+R22
+R23
+R24
+L0 7
+R7
+R16
+R25
+R26
+!i113 1
+R11
+R12
+vtop_tb
+R1
+R15
+!i10b 1
+!s100 :XUc6PY>;OMQbLN;@lo3a3
+IVlX5=0h`U[oXCebmFICe62
+R3
+!s105 top_tb_sv_unit
+S1
+R0
+w1513286611
+8E:/Project/top_tb.sv
+FE:/Project/top_tb.sv
+L0 3
+R7
+r1
+!s85 0
+31
+R16
+!s107 E:/Project/top_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/Project/top_tb.sv|
+!i113 1
+R11
+R12

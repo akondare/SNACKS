@@ -21,7 +21,7 @@ module reg_file #(parameter raw = 4)
     output logic [7:0] rt_val_o
                 );
 
-logic [7:0] RF [2**raw];				  // Actual Register File
+logic [7:0] RF [2**raw]  = '{default:8'b00};				  // Actual Register File
 
 // two simultaneous, continuous, combinational reads supported
 assign rt_val_o = RF [rt_addr_i];		  // RT = value from register in last func call

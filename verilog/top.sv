@@ -33,10 +33,11 @@ module top(
 
   // carry control
   logic carry_en = 1'b1;      // carry-in bit for addition enabled
-  logic carry_clr = reset;            // clears carry 
+  logic carry_clr;
+  assign carry_clr = reset;            // clears carry 
 
   // control signals to drive with lut
-  logic For_Jump,             // branch to + offset
+  logic For_Jump;             // branch to + offset
   logic Back_Jump;            // branch to - offset
   logic wen_i;                // reg-file write-enable for ld's and r-types
   logic[1:0] sel;	      // mux to choose reg-write value
@@ -45,7 +46,8 @@ module top(
   // inputs to drive with control signals
   logic[3:0] write_reg;	      // Reg write to rt or r1
   logic[7:0] write_select;    // Register Write Data Bus
-  logic signed[15:0] Offset = 16'b0; // offset for branch/jump
+  logic signed[15:0] Offset; // offset for branch/jump
+  logic readMem = 1'b1;			// Always read data-mem
 
 // instantiate IF Unit
 IF IF1(
@@ -65,12 +67,12 @@ InstROM #(.IW(16)) InstROM1(
   );        
 
 // instantiate Register File
-reg_file #(.raw(3)) rf1	 (
+reg_file #(.raw(4)) rf1	 (
   .clk		  (clk     	),       // clock (for writes only)
   .rt_addr_i	  (write_reg    ),       // read and write pointer rt
   .wen_i	  (wen_i        ),       // write enable
   .write_data_i	  (write_select ),       // data to be written/loaded 
-  .rs_val_o	  (rs_va        ),       // rs read out of reg file
+  .rs_val_o	  (rs_val        ),       // rs read out of reg file
   .rt_val_o       (rt_val       )        // rt read out of reg file
   );
 
@@ -89,31 +91,31 @@ alu alu1(.rs_i     (rs_val       ),  // operand 1
 data_mem dm1(
    .CLK           (clk        ), // write to mem on positive edge       
    .DataAddress   (rs_val     ), // address to read and write to/from
-   .ReadMem       (1'b1       ), // mem-read always on		
+   //.ReadMem       (readMem       ), // mem-read always on		
    .WriteMem      (WriteMem   ), // mem-write enable
    .DataIn        (rt_val     ), // value to store
    .DataOut       (DataOut    )  // value loaded from address of data-mem
 );
 
 // drive control signals based on instructions 
-assign Offset = Offset + rs_val;
-assign done = InstOut == 9'b111111111
+assign Offset = 16'b0 + rs_val;
+assign done = InstOut == 9'b111111111;
 
 // wen_i, WriteMem, For_Jump, Back_Jump, and sel with lut
-logic[1:0] dummy;
 lut lut1(
   .lut_addr({InstOut[8:4],z_o}),
-  .lut_val({dummy,wen_i,WriteMem,For_Jump,Back_Jump,sel})
+  .lut_val({wen_i,WriteMem,For_Jump,Back_Jump,sel})
 );
 
 // write_reg and write_select with sel
 always_comb begin
-write_reg = sel[1] ? InstOut[3:0] : 4'b1;
+write_reg = sel[1] ? InstOut[3:0] : 4'b0001;
 case(sel) 
   2'b00 : write_select = rt_val;
   2'b01 : write_select = {1'b0,InstOut[6:0]};
   2'b10 : write_select = result_o;
   2'b11 : write_select = DataOut;
+  endcase
 end
 
 // carry-in set to carry-out on every posedge if clear is not 1

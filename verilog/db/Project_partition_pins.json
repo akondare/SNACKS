@@ -1,0 +1,21 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "done_o",
+					"strict" : false
+				},
+				{
+					"name" : "reset_i",
+					"strict" : false
+				},
+				{
+					"name" : "clock_i",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

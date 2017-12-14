@@ -12,7 +12,7 @@ module InstROM #(parameter IW=16, DW=9)(
   input       [IW-1:0] InstAddress,	// address pointer
   output logic[DW-1:0] InstOut);
 	 
-  logic [DW-1:0] inst_rom [2**IW];	   // 2**IW elements, DW bits each
+  logic [DW-1:0] inst_rom [2**IW] = '{default:8'b00};	   // 2**IW elements, DW bits each
 // load machine code program into instruction ROM
   initial 
 	$readmemb("instruct.txt", inst_rom);
