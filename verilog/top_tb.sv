@@ -16,14 +16,8 @@ always begin
 end
 
 initial begin
-  t1.rf1.RF[0] = 8'h02;
-  t1.rf1.RF[1] = 8'h03;
-  t1.rf1.RF[2] = 8'h04;
-  t1.rf1.RF[3] = 8'h05;
-  t1.rf1.RF[4] = 8'h02;
-  t1.rf1.RF[5] = 8'h03;
-  t1.rf1.RF[6] = 8'h04;
-  t1.rf1.RF[7] = 8'h05;
+  t1.rf1 = '{default:8'b00}
+  t1.dm1 = '{default:8'b00}
 
   #20ns reset = 0;
   #5000ns $display("I give up."); 

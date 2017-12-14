@@ -97,37 +97,19 @@ data_mem dm1(
 
 // drive control signals based on instructions 
 assign Offset = Offset + rs_val;
+assign done = InstOut == 9'b111111111
 
-/*
-op_code op; 
-assign op = op_code'(InstOut[7:4]);
-always_comb begin
-  For_Jump = InstOut[8]&&(((InstOut[7:4]==4'hA)&&z_o)||((InstOut[7:4]==4'hB)&&(!z_o)));  
-  Back_Jump = InstOut[8]&&(InstOut[7:4]==4'hE); 
-  case(op)
-    CLR: wen_i = 1'b0;
-    ST: wen_i = 1'b0;
-    BZ: wen_i = 1'b0;
-    BNZ: wen_i = 1'b0;
-    JMP: wen_i = 1'b0;
-    default: wen_i = 1'b1;
-  endcase
-  WriteMem = InstOut[8:4]==5'b10110; 
-  done = InstOut==9'b111111111;
-  sel = TODO
-*/
-
-// wen_i, WriteMem, For_Jump, Back_Jump, done, and sel with lut
-logic dummy;
+// wen_i, WriteMem, For_Jump, Back_Jump, and sel with lut
+logic[1:0] dummy;
 lut lut1(
-  .lut_addr(InstOut[8:4]),
-  .lut_val({dummy,wen_i,WriteMem,For_Jump,Back_Jump,done,sel})
+  .lut_addr({InstOut[8:4],z_o}),
+  .lut_val({dummy,wen_i,WriteMem,For_Jump,Back_Jump,sel})
 );
 
 // write_reg and write_select with sel
 always_comb begin
 write_reg = sel[1] ? InstOut[3:0] : 4'b1;
-case(sel)
+case(sel) 
   2'b00 : write_select = rt_val;
   2'b01 : write_select = {1'b0,InstOut[6:0]};
   2'b10 : write_select = result_o;
