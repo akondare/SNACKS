@@ -26,10 +26,10 @@ module flt2int_tb();
 	.done_o  (done_test));
 
   top t1(            // your DUT could go here
-    .clk_i     (clk  ),		  // retain my dummy, above
-	.reset_i   (reset),
+    .clk     (clk  ),		  // retain my dummy, above
+	.reset   (reset),
 	.pMux	   (2'b01),
-	.done_o    (done));
+	.done    (done));
 
   initial begin
     score1 = 16'b0;
@@ -97,10 +97,10 @@ module flt2int_tb();
           ((real'(flt_mant)/1024)*2**flt_exp)); 
     end       
     if(flt_sign)
-      $display("output = -%d -%b",int_out[14:0],int_out[14:0]);
+      $display("output = -%d -%b",int1[14:0],int1[14:0]);
     else   
-	  $display("output = %d   %b",int_out[14:0],int_out[14:0]);
-    $display("%d %d",int_out,(real'(flt_mant)/1024)*2**flt_exp);		 
+	  $display("output = %d   %b",int1[14:0],int1[14:0]);
+    $display("%d %d",int1,(real'(flt_mant)/1024)*2**flt_exp);		 
 	if(int_out - (real'(flt_mant)/1024)*2**flt_exp < 2)
       score1 ++;
     if(int_out == int1[14:0]) score2++;   

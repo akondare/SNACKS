@@ -9,39 +9,40 @@ z2
 cModel Technology
 dE:/Project
 valu
-Z0 DXx6 sv_std 3 std 0 22 WmjPaeP=7F5?QFXzJ>D[Q2
-Z1 DXx4 work 11 definitions 0 22 E0;]OHEgz:173z046NgjS3
-DXx4 work 11 alu_sv_unit 0 22 2]`GQ12EgY_:6]SO`M_iE1
+Z0 DXx6 sv_std 3 std 0 22 AD7iAPLo6nTIKk<N0eo=D3
+Z1 DXx4 work 11 definitions 0 22 4Bb9G?T?Y^26KJmOaI]g13
+DXx4 work 11 alu_sv_unit 0 22 CfS?XD9>TDBk8QQ`UjlcR2
 Z2 VDg1SIo80bB@j0V0VzS_@n1
 r1
 !s85 0
 31
 !i10b 1
 !s100 f<]L_Ca>]8?fb;hGm6N6n2
-I1dZNVHzV7oTWF]YS7z`C21
+I4hgI>0cNM[E?aA?SE8]Lm1
 !s105 alu_sv_unit
 S1
-Z3 dC:/Users/JoshuaKwa/Desktop/SNACKS/verilog
-Z4 w1513316929
-Z5 8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/alu.sv
-Z6 FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/alu.sv
+Z3 dE:/SNACKS
+Z4 w1513340263
+Z5 8E:/SNACKS/alu.sv
+Z6 FE:/SNACKS/alu.sv
 L0 3
-Z7 OV;L;10.4d;61
-Z8 !s108 1513318352.000000
-Z9 !s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/alu.sv|
-Z10 !s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/alu.sv|
+Z7 OV;L;10.5b;63
+Z8 !s108 1513341296.000000
+Z9 !s107 E:/SNACKS/alu.sv|
+Z10 !s90 -reportprogress|300|-work|work|E:/SNACKS/alu.sv|
 !i113 1
 Z11 o-work work
+Z12 tCvgOpt 0
 Xalu_sv_unit
 R0
 R1
-V2]`GQ12EgY_:6]SO`M_iE1
+VCfS?XD9>TDBk8QQ`UjlcR2
 r1
 !s85 0
 31
 !i10b 1
 !s100 Ni?LHocCBzUk_C>9g2PMl3
-I2]`GQ12EgY_:6]SO`M_iE1
+ICfS?XD9>TDBk8QQ`UjlcR2
 !i103 1
 S1
 R3
@@ -55,302 +56,412 @@ R9
 R10
 !i113 1
 R11
+R12
 vdata_mem
 R0
-!s110 1513318352
+Z13 !s110 1513341297
 !i10b 1
 !s100 Y?ZV]1OO1RoZQDPK2d9Vz3
-I^h2gd]D:A3J2:bh0k]L;>3
+Ik9fjicbOVi8T>CSPgIJzm0
 R2
 !s105 data_mem_sv_unit
 S1
 R3
-w1513307763
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/data_mem.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/data_mem.sv
+R4
+8E:/SNACKS/data_mem.sv
+FE:/SNACKS/data_mem.sv
 L0 10
 R7
 r1
 !s85 0
 31
-R8
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/data_mem.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/data_mem.sv|
+Z14 !s108 1513341297.000000
+!s107 E:/SNACKS/data_mem.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/data_mem.sv|
 !i113 1
 R11
+R12
 Xdefinitions
 R0
-Z12 !s110 1513318353
+R13
 !i10b 1
 !s100 eNkTO<9N[hck7UVgZGKaa3
-IE0;]OHEgz:173z046NgjS3
-VE0;]OHEgz:173z046NgjS3
+I4Bb9G?T?Y^26KJmOaI]g13
+V4Bb9G?T?Y^26KJmOaI]g13
 S1
 R3
-Z13 w1513282795
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/definitions.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/definitions.sv
+Z15 w1513340264
+8E:/SNACKS/definitions.sv
+FE:/SNACKS/definitions.sv
 L0 2
 R7
 r1
 !s85 0
 31
-Z14 !s108 1513318353.000000
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/definitions.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/definitions.sv|
+R14
+!s107 E:/SNACKS/definitions.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/definitions.sv|
 !i113 1
 R11
-vIF
-R0
 R12
-!i10b 1
-!s100 6ZAWdnCkX5f6Ab@dd1hY`1
-IL7Sd7YA]i:Kzzh8e20mNb1
-R2
-!s105 IF_sv_unit
-S1
-R3
+vflt2int
+R0
 R13
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/IF.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/IF.sv
-L0 7
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/IF.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/IF.sv|
-!i113 1
-R11
-n@i@f
-vInstROM
-R0
-R12
 !i10b 1
-!s100 JSdEzgdg934nGb61RA4=E2
-IgKBn47ABC5T=e;9WbL0I92
+!s100 bI1?DXMaRDQo4Pc6h5NeU2
+IJaGgB9_[^blQFbDl@;<HQ1
 R2
-!s105 InstRom_sv_unit
+!s105 flt2int_sv_unit
 S1
 R3
-Z15 w1513287440
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/InstRom.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/InstRom.sv
-L0 11
-R7
-r1
-!s85 0
-31
-R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/InstRom.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/InstRom.sv|
-!i113 1
-R11
-n@inst@r@o@m
-vint2flt
-R0
-R12
-!i10b 1
-!s100 3RS?TGDhoQ0<h_X>eJ>4Y2
-ISnc@HYF_H9ah[9XP:[<IZ0
-R2
-!s105 int2flt_sv_unit
-S1
-R3
-w1513306513
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt.sv
+w1513340422
+8E:/SNACKS/flt2int.sv
+FE:/SNACKS/flt2int.sv
 L0 4
 R7
 r1
 !s85 0
 31
 R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt.sv|
+!s107 E:/SNACKS/flt2int.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/flt2int.sv|
 !i113 1
 R11
+R12
+vflt2int_tb
+R0
+R13
+!i10b 1
+!s100 cEC?T_34ai;cdhz1aR<UN0
+I7AK0nW9aY[fP5jTDP37fg1
+R2
+!s105 flt2int_tb_sv_unit
+S1
+R3
+w1513341261
+8E:/SNACKS/flt2int_tb.sv
+FE:/SNACKS/flt2int_tb.sv
+L0 7
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/flt2int_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/flt2int_tb.sv|
+!i113 1
+R11
+R12
+vfltflt
+R0
+R13
+!i10b 1
+!s100 lVD2Uza>ZQ>67CmAhG>OA3
+IQ44Sic174XjNSZ9eJR6d92
+R2
+!s105 fltflt_sv_unit
+S1
+R3
+R15
+8E:/SNACKS/fltflt.sv
+FE:/SNACKS/fltflt.sv
+L0 4
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/fltflt.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/fltflt.sv|
+!i113 1
+R11
+R12
+vfltflt_tb
+R0
+R13
+!i10b 1
+!s100 @NjBAGL8:Q<dhh@X^:D8m1
+IlNnDZ?^V8G0zkn00A0OMa3
+R2
+!s105 fltflt_tb_sv_unit
+S1
+R3
+R15
+8E:/SNACKS/fltflt_tb.sv
+FE:/SNACKS/fltflt_tb.sv
+L0 7
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/fltflt_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/fltflt_tb.sv|
+!i113 1
+R11
+R12
+vIF
+R0
+R13
+!i10b 1
+!s100 6ZAWdnCkX5f6Ab@dd1hY`1
+Ie2RDQI_UJThCN=NO>lL3S2
+R2
+!s105 IF_sv_unit
+S1
+R3
+R4
+8E:/SNACKS/IF.sv
+FE:/SNACKS/IF.sv
+L0 7
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/IF.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/IF.sv|
+!i113 1
+R11
+R12
+n@i@f
+vInstROM
+R0
+R13
+!i10b 1
+!s100 f4A6U0T8[729G;@=YT7Tb1
+Ie7JWS4A903YmJ_1LHCP?P0
+R2
+!s105 InstRom_sv_unit
+S1
+R3
+w1513340601
+8E:/SNACKS/InstRom.sv
+FE:/SNACKS/InstRom.sv
+L0 11
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/InstRom.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/InstRom.sv|
+!i113 1
+R11
+R12
+n@inst@r@o@m
+vint2flt
+R0
+R13
+!i10b 1
+!s100 3RS?TGDhoQ0<h_X>eJ>4Y2
+IgoUGD31WbSOkIAgeA0Z`j1
+R2
+!s105 int2flt_sv_unit
+S1
+R3
+R15
+8E:/SNACKS/int2flt.sv
+FE:/SNACKS/int2flt.sv
+L0 4
+R7
+r1
+!s85 0
+31
+R14
+!s107 E:/SNACKS/int2flt.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/int2flt.sv|
+!i113 1
+R11
+R12
 vint2flt_tb
 R0
-R12
+Z16 !s110 1513341298
 !i10b 1
-!s100 ]m^WmnYWRg=gjVKf9TXVR0
-IUD5Ncikh79M?8X]GQ=lOB3
+!s100 Pde[n^ZEPh`V@om<OzU1@3
+IMjSa;jC6OLh@33CAa6Zcg2
 R2
 !s105 int2flt_tb_sv_unit
 S1
 R3
-w1513307445
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt_tb.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt_tb.sv
+R15
+8E:/SNACKS/int2flt_tb.sv
+FE:/SNACKS/int2flt_tb.sv
 L0 8
 R7
 r1
 !s85 0
 31
 R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt_tb.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/int2flt_tb.sv|
+!s107 E:/SNACKS/int2flt_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/int2flt_tb.sv|
 !i113 1
 R11
+R12
 vlut
 R0
 R1
-DXx4 work 11 lut_sv_unit 0 22 G13K4V0[]DSP;@@]V^cQh2
+DXx4 work 11 lut_sv_unit 0 22 5T7@aJWB;1U[R_<`7cG9W1
 R2
 r1
 !s85 0
 31
 !i10b 1
 !s100 FenNbmM[[P6F:Z[h@h@En2
-Il]kF8HNb5STS`fgT<;^3K1
+I:Zm[_g2NY3HlKWk3SYg=e0
 !s105 lut_sv_unit
 S1
 R3
 R15
-Z16 8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/lut.sv
-Z17 FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/lut.sv
+Z17 8E:/SNACKS/lut.sv
+Z18 FE:/SNACKS/lut.sv
 L0 3
 R7
-R14
-Z18 !s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/lut.sv|
-Z19 !s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/lut.sv|
+Z19 !s108 1513341298.000000
+Z20 !s107 E:/SNACKS/lut.sv|
+Z21 !s90 -reportprogress|300|-work|work|E:/SNACKS/lut.sv|
 !i113 1
 R11
+R12
 Xlut_sv_unit
 R0
 R1
-VG13K4V0[]DSP;@@]V^cQh2
+V5T7@aJWB;1U[R_<`7cG9W1
 r1
 !s85 0
 31
 !i10b 1
 !s100 ZKV1HamWLedo5KL7?JiC@0
-IG13K4V0[]DSP;@@]V^cQh2
+I5T7@aJWB;1U[R_<`7cG9W1
 !i103 1
 S1
 R3
 R15
-R16
 R17
+R18
 L0 1
 R7
-R14
-R18
 R19
+R20
+R21
 !i113 1
 R11
+R12
 vreg_file
 R0
-R12
+R16
 !i10b 1
 !s100 5iaVofNdKSCNJ4kDI8nh83
-IV604@`dFoh=IY8e;i3gfG3
+IcdUcTW^zn49A@HXJzZC[l1
 R2
 !s105 reg_file_sv_unit
 S1
 R3
-w1513304544
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/reg_file.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/reg_file.sv
+Z22 w1513340265
+8E:/SNACKS/reg_file.sv
+FE:/SNACKS/reg_file.sv
 L0 15
 R7
 r1
 !s85 0
 31
-R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/reg_file.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/reg_file.sv|
+R19
+!s107 E:/SNACKS/reg_file.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/reg_file.sv|
 !i113 1
 R11
-vschematic
 R12
+vschematic
+R16
 !i10b 1
 !s100 dRjQziN[Ba5h<jzz`l`LI2
-IL_IeS56WU1LQ5ZYOBdX[^0
+IHEh?CRBW<fT?^omg9f_8`3
 R2
 R3
-R15
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/schematic.v
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/schematic.v
+R22
+8E:/SNACKS/schematic.v
+FE:/SNACKS/schematic.v
 L0 19
 R7
 r1
 !s85 0
 31
-R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/schematic.v|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/schematic.v|
+R19
+!s107 E:/SNACKS/schematic.v|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/schematic.v|
 !i113 1
 R11
+R12
 vtop
 R0
 R1
-DXx4 work 11 top_sv_unit 0 22 i5bCGfBha;j6F2zB<@<Yf3
+DXx4 work 11 top_sv_unit 0 22 aaPCBZGSilf_bXX0X5?931
 R2
 r1
 !s85 0
 31
 !i10b 1
-!s100 i8g<=5V:hFA=V7WJ5UX_e2
-I:=gZzMnTZ8?KfMBQW35H=1
+!s100 DO^2H_EeT3DM]Ib4OR4Y33
+IH36^leO7mCD=f?9nLaRan0
 !s105 top_sv_unit
 S1
 R3
-Z20 w1513303759
-Z21 8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top.sv
-Z22 FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top.sv
+R22
+Z23 8E:/SNACKS/top.sv
+Z24 FE:/SNACKS/top.sv
 L0 8
 R7
-R14
-Z23 !s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top.sv|
-Z24 !s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top.sv|
+R19
+Z25 !s107 E:/SNACKS/top.sv|
+Z26 !s90 -reportprogress|300|-work|work|E:/SNACKS/top.sv|
 !i113 1
 R11
+R12
 Xtop_sv_unit
 R0
 R1
-Vi5bCGfBha;j6F2zB<@<Yf3
+VaaPCBZGSilf_bXX0X5?931
 r1
 !s85 0
 31
 !i10b 1
 !s100 5gbc^RO2R^MTQ<8>^64M83
-Ii5bCGfBha;j6F2zB<@<Yf3
+IaaPCBZGSilf_bXX0X5?931
 !i103 1
 S1
 R3
-R20
-R21
 R22
-L0 7
-R7
-R14
 R23
 R24
+L0 7
+R7
+R19
+R25
+R26
 !i113 1
 R11
+R12
 vtop_tb
 R0
-R12
+R16
 !i10b 1
 !s100 T2Z>B?PCgY7LkEOhiBVnA3
-I<7JW<4UX4^FMKag2P`EVV2
+In<M2DWFHam>Ki4UCQ5dzU3
 R2
 !s105 top_tb_sv_unit
 S1
 R3
-w1513315885
-8C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top_tb.sv
-FC:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top_tb.sv
+R22
+8E:/SNACKS/top_tb.sv
+FE:/SNACKS/top_tb.sv
 L0 3
 R7
 r1
 !s85 0
 31
-R14
-!s107 C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top_tb.sv|
-!s90 -reportprogress|300|-work|work|C:/Users/JoshuaKwa/Desktop/SNACKS/verilog/top_tb.sv|
+R19
+!s107 E:/SNACKS/top_tb.sv|
+!s90 -reportprogress|300|-work|work|E:/SNACKS/top_tb.sv|
 !i113 1
 R11
+R12

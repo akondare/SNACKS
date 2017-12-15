@@ -19,9 +19,9 @@ module InstROM #(parameter IW=16, DW=9)(
   // load machine code program into instruction ROM
   initial 
 	case(ProgMux)
-		2'b00: $readmemb("i2f.txt", inst_rom);
 		2'b01: $readmemb("f2i.txt", inst_rom);
-		default: $readmemb("fad.txt", inst_rom);
+		2'b10: $readmemb("fad.txt", inst_rom);
+		default: $readmemb("i2f.txt", inst_rom);
 	endcase
 
 // continuous combinational read output  

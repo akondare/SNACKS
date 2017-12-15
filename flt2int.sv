@@ -15,7 +15,6 @@ module flt2int(
 //   load operands and read results
   data_mem data_mem1(.CLK        (clk_i),	 // your DUT will need this connection
                      .DataAddress(8'b0),		 // you DUT will need to drive this
-                     .ReadMem    (1'b1),		 // you may be able to read continuously
                      .WriteMem   (1'b0),        // your DUT will need this = 1 during store ops
                      .DataIn     (8'b0),		 // your DUT will need to drive this for store ops
                      .DataOut    (DataOut)); // your DUT will need to connect this for load ops     
