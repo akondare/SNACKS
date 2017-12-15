@@ -1,0 +1,37 @@
+# Load MSB's and LSB's of float into R2 and R3
+Assign 127
+Set R0
+Inc R0
+Ld R2
+Inc R0
+Ld R3
+Inc R0
+Ld R4
+Inc R0
+Ld R5
+Inc R0
+
+# sign equivalence (s1+s2 << 7) = 0 if they are equivalent
+Assign R2
+Set R6
+Assign R4
+Add R6
+Assign 7
+Sl R6
+
+# get E of F1 and F2 into R7 and R8 respectively
+Assign R2
+Set R7
+Assign R4
+Set R8
+Assign 1
+Sl R7
+Sl R8
+Assign 3
+
+## Return Code ## 
+Assign R0
+St #TODO
+Inc R0
+St #TODO
+HALT
