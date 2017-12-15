@@ -7,7 +7,8 @@
 import definitions::*;
 module top(
   input clk,  
-        reset,
+  input reset,
+  input [1:0] pMux,
   output logic done
 );
   // PC is address of length IW 
@@ -64,6 +65,7 @@ IF IF1(
 // instantiate InstROM 
 InstROM #(.IW(16)) InstROM1(
   .InstAddress (PC),    // address pointer to read from
+  .ProgMux (pMux),    // to choose program to load
   .InstOut (InstOut)	// 9-bit instruction read for address
   );        
 

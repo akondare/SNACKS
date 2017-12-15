@@ -1,10 +1,24 @@
 import sys
-infile = open(sys.argv[1])
+filename = sys.argv[1][:-4]
+infile = open(filename+".snk")
 
+midfile = open(filename+".mid",'w')
+midfile.write('')
+midfile = open(filename+".mid",'a')
+
+for i,l in iter(enumerate(infile)):
+    # empty lines and comments are ignored 
+    if len(l.lower().split()) == 0 or l[0] == '#':
+        continue
+    # write to outfile
+    midfile.write(l)
+midfile.close()
+
+infile = open(filename+".mid")
 # initialize empty outfile and append new machine lines of machine code
-outfile = open(sys.argv[2],'w')
+outfile = open(filename+".txt",'w')
 outfile.write('')
-outfile = open('./verilog/'+sys.argv[2],'a')
+outfile = open(filename+".txt",'a')
 
 func = { 'clr' : '0000',	
          'add' : '0001',	

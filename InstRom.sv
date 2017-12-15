@@ -10,12 +10,19 @@
 // depth = 2**IW (default IW=16)
 module InstROM #(parameter IW=16, DW=9)(
   input       [IW-1:0] InstAddress,	// address pointer
+  input       [1:0]	ProgMux,
   output logic[DW-1:0] InstOut);
 	 
-  logic [DW-1:0] inst_rom [2**IW] = '{default:8'b00};	   // 2**IW elements, DW bits each
-// load machine code program into instruction ROM
+  // 2**IW elements, DW bits each
+  logic [DW-1:0] inst_rom [2**IW] = '{default:8'b00};  
+
+  // load machine code program into instruction ROM
   initial 
-	$readmemb("instruct.txt", inst_rom);
+	case(ProgMux)
+		2'b00: $readmemb("i2f.txt", inst_rom);
+		2'b01: $readmemb("f2i.txt", inst_rom);
+		default: $readmemb("fad.txt", inst_rom);
+	endcase
 
 // continuous combinational read output  
 //   change the pointer (from program counter) ==> change the output

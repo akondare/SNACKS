@@ -21,6 +21,7 @@ module int2flt_tb();
   top f3(				 // your DUT goes here
     .clk  (clk),			 //  rename module & ports
 	.reset(reset),			 //  as necessary
+	.pMux(2'b00),
     .done (done2));          
   always begin               // clock 
     #5ns clk = 1'b1;			 
