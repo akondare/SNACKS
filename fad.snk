@@ -11,13 +11,11 @@ Inc R0
 Ld R5
 Inc R0
 
-# sign equivalence (s1+s2 << 7) = 0 if they are equivalent
+# Signs in R6 and R7
 Assign R2
 Set R6
 Assign R4
-Add R6
-Assign 7
-Sl R6
+Set R7
 
 # get E of F1 and F2 into R7 and R8 respectively
 Assign R2
@@ -28,10 +26,203 @@ Assign 1
 Sl R7
 Sl R8
 Assign 3
+Sr R7
+Sr R8
+
+# get R9:(E1-E2) and R10:(E2-E1), if R9>R10: EXP(A) greater, etc
+Assign R7
+Set R9
+Assign R8
+Set R10
+Assign R8
+Sub R9
+Assign R7
+Sub R10
+Assign R9
+Set r11
+Assign R10
+Sub R11
+
+# clear Sign and E and restore Hidden bit of R2 and R4
+Assign 6
+Sl R2
+Sr R2 
+Sl R4
+Sr R4
+Assign 4
+Or R2
+Or R4
+
+# skip to step 3 as E's are equal
+Assign #TODO
+Bz R11
+
+# if sign = 1, R9 is negative meaning E2 > E1 
+Assign 7
+Sl R11
+Assign #TODO
+Bnz R11
+
+### Starting E1 > E2
+Assign R2
+Set R8
+Assign 7
+Sr R8
+Sl R8
+
+# right-shift R4-R5 by R9 Bits
+# Copy r4 into r13
+Assign R4
+Set R10
+Assign R5
+Set R11
+
+# shift r4 and r5 by r9
+Assign r9
+Sr R4
+Sr R5
+
+# get (r9 # of) lsb's of r4 into r5's msbs
+Assign 8
+Set r12
+Assign r9
+Sub r12
+Assign r12
+Sl R10
+Sl R11
+
+# put lsb of r2 into msb of r3
+Assign R10
+Or R5
+
+# skip else statement
+Clr r13
+Assign #TODO
+BZ r13
+
+### Starting E2 > E1 Branch From Above
+# set S and E of larger mantissa
+Assign R4
+Set R8
+Assign 7
+Sr R8
+Sl R8
+Assign R7
+Set R6
+
+
+# right-shift R4-R5 by R9 Bits
+# Copy r4 into r13
+Assign R2
+Set R10
+Assign R3
+Set R11
+
+# shift r4 and r5 by r9
+Assign r9
+Sr R2
+Sr R3
+
+# get (r9 # of) lsb's of r4 into r5's msbs
+Assign 8
+Set r12
+Assign r9
+Sub r12
+Assign r12
+Sl R10
+Sl R11
+
+# put lsb of r2 into msb of r3
+Assign R10
+Or R3
+
+#### Step 3 - Add mantissas ###
+Assign R5
+Add R3
+Adc R2
+Assign R4
+Add R2
+
+#### Calculate U,R,S bit ####
+# lsb of R2 is U bit -> R7 
+Assign R2
+Set R7
+Assign 7
+Sl R7
+# msb of R11 is R bit and or(remaining is S bit)
+Assign R11
+Set R9
+Set R10
+Assign 7
+Sr R9
+Assign 1
+Sl R10
+
+# skip rounding if R bit is 0
+Assign 8
+BZ R9
+
+# skip rounding if U(r7) or S(r10) bits are 0
+Assign r7
+Or r10
+Assign 4
+BZ R10
+
+# rounding
+Assign 1
+Add R3
+Adc R2
+
+# overflow case
+Assign R4
+Set R2
+Assign 8 
+And R4
+Assign #TODO
+Bz R4
+
+# right shift by 1
+Assign R2
+Set R5
+Assign R3
+Set R7
+
+Assign 1
+Sr R2
+Sr R3
+Sr R11
+
+Assign 7
+Sl R5
+Sl R7
+
+Assign R5
+Or R3
+Assign R7
+Or R11
+
+# increment exponent
+Inc R6
+
+#### set up final float ####
+# clear hidden bit from mantissa
+Assign 6
+Sl R2
+Sr R2
+
+# add exponent to mantissa
+Assign 2
+Sl r6
+Assign r6
+Or r2
+
+# add sign bit to final
+Assign r8
+Or r2
 
 ## Return Code ## 
 Assign R0
-St #TODO
+St r2
 Inc R0
-St #TODO
+St r3
 HALT
