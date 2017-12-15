@@ -19,7 +19,7 @@ Assign 30
 Sub R6
 Assign 7
 Sr R6
-Assign 11
+Assign 12
 Bnz R6
 Assign 127
 Set R7
@@ -38,7 +38,7 @@ Assign 14
 Sub R6
 Assign 7
 Sr R6
-Assign 9
+Assign 10
 Bz R6
 Clr R7
 Assign R4
@@ -59,14 +59,13 @@ Assign 43
 Bnz R6
 Assign r3
 Set r8
-Assign 5 
+Assign 6 
 Sl r2
+Assign 1
+Sr r2
+Assign 5 
 Sl r3
-Assign 8
-Set r10
-Assign 5
-Sub r10
-Assign r10
+Assign 3
 Sr r8
 Assign r8
 Or r2
@@ -74,6 +73,7 @@ Assign 1
 Set R8 
 Assign 7
 Sl R8
+Assign R8
 Or R2
 Assign 30
 Set R7
@@ -101,6 +101,7 @@ St R3
 HALT
 Assign 4
 Set R8 
+Assign R8
 Or R2
 Assign 5
 Sl R2
@@ -111,10 +112,10 @@ Assign r5
 Sub r9
 Assign r9
 Set r10
-Assign 8
+Assign 9
 Sub r10
-Assign 44
-Bnz r10
+Assign 43
+Bz r10
 Assign R2
 Set R10
 Assign R3

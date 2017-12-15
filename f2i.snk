@@ -28,7 +28,7 @@ Assign 30
 Sub R6
 Assign 7
 Sr R6
-Assign 11
+Assign 12
 Bnz R6
 
 # get (Sign) + all 1's in R7
@@ -55,7 +55,7 @@ Assign 14
 Sub R6
 Assign 7
 Sr R6
-Assign 9
+Assign 10
 Bz R6
 
 # get all 1's in R8 by setting to 0 and decrementing
@@ -86,15 +86,14 @@ Bnz R6
 Assign r3
 Set r8
 
-Assign 5 
+Assign 6 
 Sl r2
+Assign 1
+Sr r2
+Assign 5 
 Sl r3
 
-Assign 8
-Set r10
-Assign 5
-Sub r10
-Assign r10
+Assign 3
 Sr r8
 
 Assign r8
@@ -105,6 +104,7 @@ Assign 1
 Set R8 
 Assign 7
 Sl R8
+Assign R8
 Or R2
 
 # get shift right value
@@ -148,6 +148,7 @@ HALT
 ## Set hidden bit into msb of 3'rd lsb bit ####
 Assign 4
 Set R8 
+Assign R8
 Or R2
 Assign 5
 Sl R2
@@ -160,10 +161,10 @@ Assign r5
 Sub r9
 Assign r9
 Set r10
-Assign 8
+Assign 9
 Sub r10
-Assign 44
-Bnz r10
+Assign 43
+Bz r10
 
 # shift right by R9 value 
 # Copy r2 into r10

@@ -17,7 +17,7 @@ module InstROM #(parameter IW=16, DW=9)(
   logic [DW-1:0] inst_rom [2**IW] = '{default:8'b00};  
 
   // load machine code program into instruction ROM
-  initial 
+  initial #5ns
 	case(ProgMux)
 		2'b01: $readmemb("f2i.txt", inst_rom);
 		2'b10: $readmemb("fad.txt", inst_rom);
