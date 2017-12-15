@@ -23,8 +23,8 @@ always_comb								  							// no registers, no clocks
   // execute operation based on opcode
   case (op3)   						 
 		CLR: result_o = 8'h00;
-		ADD: {ov_o, result_o} = rs_i + rt_i;
-		SUB: {ov_o, result_o} = rs_i - rt_i;
+		ADD: {ov_o, result_o} = rt_i + rs_i;
+		SUB: {ov_o, result_o} = rt_i - rs_i;
 		AND: result_o = rs_i & rt_i;
 		OR: result_o = rs_i | rt_i;
 		LD: result_o   = 'd0;
@@ -34,8 +34,8 @@ always_comb								  							// no registers, no clocks
 		SET: result_o = rs_i;
 		BZ: result_o   = 'd0;
 		BNZ: result_o   = 'd0;
-		INC: {ov_o, result_o} = rs_i + 9'b1;
-		DEC: {ov_o, result_o} = rs_i - 9'b1;
+		INC: {ov_o, result_o} = rt_i + 9'b000000001;
+		DEC: {ov_o, result_o} = rt_i - 9'b000000001;
 		JMP: result_o   = 'd0;
 		ADC: {ov_o, result_o} = rt_i + ov_i;
 		endcase

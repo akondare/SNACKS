@@ -24,7 +24,6 @@ module data_mem #(parameter AW=8)(
 // read from memory, e.g. on load instruction
   always_comb begin							 // reads are immediate/combinational   
     DataOut = my_memory[DataAddress];
-	 $display("Memory read M[%d] = %d",DataAddress,DataOut);
 	end
 
 // write to memory, e.g. on store instruction

@@ -1,7 +1,7 @@
 # Load MSB's and LSB's of int into R2 and R3
-Assign 0
-Ld R2
 Assign 1
+Ld R2
+Assign 2
 Ld R3
 
 # Extract sign bit
@@ -22,9 +22,15 @@ Assign 1
 Sl R2
 Sr R2
 	
-# if int is equal to 0: return 0x0000 as float 
+# if int is equal to 0: return 0x0000 as float
+Assign R2
+Or R8
+
+Assign R3
+Or R8
+
 Assign 8 
-BNZ R2
+BNZ R8
 
 Clr R6
 Clr R7
@@ -57,12 +63,12 @@ Assign 1
 Sl R2
 Sl R3
 
-# get msb of r3 into r8
+# get msb of r3 into r7
 Assign 7
-Sr R8
+Sr R7
 
 # put msb of r3 into lsb of r2
-Assign R8
+Assign R7
 Or R2
 
 # decrement exponent
@@ -78,7 +84,7 @@ Jmp R0
 Assign R3
 Set R6
 Set R7
-Set R9
+Set R8
 
 # extract U and R bits
 Assign 4
@@ -91,25 +97,18 @@ And R7
 
 # get bits below rounding bit 
 Assign 5
-Sl R9
-
-# if R9 == 0: R8=0 ? R8=1
-Clr R8
-Assign 3
-BZ R9
-Assign 1
-Set R8
+Sl R8
 
 #### Rounding Logic ####
 
 # branch if rounding bit(R7) is not 1
-Assign 8
+Assign 24
 BZ R7
 
 # branch if neither U nor S is 1 (add them together and check bz)
-Assign R7
+Assign R8
 Add R6
-Assign 4
+Assign 20
 BZ R6
 	
 # add 8 (1 to the 4th LSB Bit to Round)

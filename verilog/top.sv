@@ -45,6 +45,7 @@ module top(
   
   // inputs to drive with control signals
   logic[3:0] write_reg;	      // Reg write to rt or r1
+  logic[3:0] rt_reg;	      // Reg read to rs or r1
   logic[7:0] write_select;    // Register Write Data Bus
   logic signed[15:0] Offset; // offset for branch/jump
   logic readMem = 1'b1;			// Always read data-mem
@@ -69,7 +70,8 @@ InstROM #(.IW(16)) InstROM1(
 // instantiate Register File
 reg_file #(.raw(4)) rf1	 (
   .clk		  (clk     	),       // clock (for writes only)
-  .rt_addr_i	  (write_reg    ),       // read and write pointer rt
+  .rt_addr_i	  (rt_reg    ),       // read and write pointer rt
+  .rd_addr_i	  (write_reg    ),       // read and write pointer rt
   .wen_i	  (wen_i        ),       // write enable
   .write_data_i	  (write_select ),       // data to be written/loaded 
   .rs_val_o	  (rs_val        ),       // rs read out of reg file
@@ -110,6 +112,7 @@ lut lut1(
 // write_reg and write_select with sel
 always_comb begin
 write_reg = sel[1] ? InstOut[3:0] : 4'b0001;
+rt_reg = sel[1] ? write_reg : InstOut[3:0];
 case(sel) 
   2'b00 : write_select = rt_val;
   2'b01 : write_select = {1'b0,InstOut[6:0]};
