@@ -1,0 +1,289 @@
+# Load MSB's and LSB's of int into R2 and R3
+Assign 64
+Ld R2
+Assign 65
+Ld R3
+
+# Extract sign bit into MSB of r4
+Assign R2
+Set R4
+Assign 7
+Sr R4
+Sl R4
+
+# Extract exponent into LSB's of r5
+Assign R2
+Set R5
+Assign 1
+Sl R5
+Assign 3
+Sr R5
+
+#### Overflow - 31 and 30 return all 1's ####
+
+# check if 1 in msb after (E-30) (means negative so exp is < 30 so skip)
+Assign R5
+Set R6
+Assign 30 
+Sub R6
+Assign 7
+Sr R6
+Assign 11
+Bnz R6
+
+# get (Sign) + all 1's in R7
+Assign 127
+Set R7
+Assign R4
+Or R7
+
+# get all 1's in R8 by setting to 0 and decrementing
+Clr R8
+Dec R8
+Assign 66 
+St R7
+Assign 67
+St R8
+HALT
+
+#### Underflow - 0-13 return all 1's ####
+
+# check if 0 in msb after subing (means positive so exp is > 13 so skip)
+Assign R5
+Set R6
+Assign 14 
+Sub R6
+Assign 7
+Sr R6
+Assign 9
+Bz R6
+
+# get all 1's in R8 by setting to 0 and decrementing
+Clr R7
+Assign R4
+Or R7
+Clr R8
+Assign 66 
+St R7
+Assign 67
+St R8
+HALT
+
+
+#### 25-29 - mantissa value or greater so just shift left ####
+
+# check if 1 in msb after (E-25) (means negative so exp is < 25 so skip)
+Assign R5
+Set R6
+Assign 24
+Sub R6
+Assign 7
+Sr R6
+Assign 43
+Bnz R6
+
+## Shift mantissa left 
+Assign r3
+Set r8
+
+Assign 5 
+Sl r2
+Sl r3
+
+Assign 8
+Set r10
+Assign 5
+Sub r10
+Assign r10
+Sr r8
+
+Assign r8
+Or r2
+
+## Set hidden bit into msb of msb bits ####
+Assign 1
+Set R8 
+Assign 7
+Sl R8
+Or R2
+
+# get shift right value
+Assign 30
+Set R7
+Assign R5
+Sub R7
+
+# shift right by R7 value 
+# Copy r2 into r8
+Assign R2
+Set R8
+
+# shift r2 and r3 by r7
+Assign r7
+Sr R2
+Sr R3
+
+# get (r7 # of) lsb's of r2 into r8's msbs
+Assign 8
+Set r9
+Assign r7
+Sub r9
+Assign r9
+Sl R8
+
+# put lsb of r2 into msb of r3
+Assign R8
+Or R3
+
+Assign R4
+Or R2
+Assign 66 
+St R2
+Assign 67
+St R3
+HALT
+
+#### 14-24 - smaller than mantissa up to (0<x<1), round #### 
+
+## Set hidden bit into msb of 3'rd lsb bit ####
+Assign 4
+Set R8 
+Or R2
+Assign 5
+Sl R2
+Sr R2
+
+## case where 25-E <= 8, shift right by 25-E, U:R3[0],R:R8[7], S:[6:0]
+Assign 25
+Set r9
+Assign r5
+Sub r9
+Assign r9
+Set r10
+Assign 8
+Sub r10
+Assign 44
+Bnz r10
+
+# shift right by R9 value 
+# Copy r2 into r10
+Assign R2
+Set R10
+# Copy r3 into r12
+Assign R3
+Set R12
+
+# shift r2 and r3 by r9
+Assign r9
+Sr R2
+Sr R3
+
+# get (r7 # of) lsb's of r2 into r10's msbs and of r3 into r12's msbs
+Assign 8
+Set r11
+Assign r9
+Sub r11
+Assign r11
+Sl R10
+Sl R12
+
+# put lsb of r2 into msb of r3
+Assign R10
+Or R3
+
+# don't round if R (r12[7]) is 0
+Assign r12
+Set r13
+Assign 7
+Sr r13
+Assign 14
+Bz r13
+
+# don't round if U(r3[0]) or S (or(r12[6:0]) is 0
+Assign r3
+Set r13
+Assign 7
+Sl r13
+Assign 1
+Sl r12
+Assign r13
+Or r12
+Assign 4
+Bz r12
+
+# round by adding 1
+Assign 1
+Add R3
+Adc R2
+
+# add sign bit and store
+Assign r4
+Or R2
+Assign 66 
+St R2
+Assign 67
+St R3
+HALT
+
+## 14-16 : shift right by 17-E, U is R2[0], R is R3[7], S is R3+R8[7:5]
+Assign 17
+Set r9
+Assign r5
+Sub r9
+
+# shift right by R9 value 
+# Copy r2 into r10
+Assign R2
+Set R10
+# Copy r3 into r12
+Assign R3
+Set R12
+
+# shift r2 and r3 by r9
+Assign r9
+Sr R2
+Sr R3
+
+# get (r7 # of) lsb's of r2 into r10's msbs and of r3 into r12's msbs
+Assign 8
+Set r11
+Assign r9
+Sub r11
+Assign r11
+Sl R10
+Sl R12
+
+# put lsb of r2 into msb of r3
+Assign R10
+Or R3
+
+# don't round if R (r3[7]) is 0
+Assign r3
+Set r13
+Assign 7
+Sr r13
+Assign 13
+Bz r13
+
+# don't round if U(r2[0]) or S (or(r3+r12[7:5]) is 0
+Assign r2
+Set r13
+Assign 7
+Sl r13
+Assign r13
+Or r12
+Assign r3
+Or r12
+Assign 3
+Bz r12
+
+# round by adding 1
+Assign 1
+Add R2
+
+# sign bit in msbs and 0-3 msbs in in lsb
+Assign 66 
+St R4
+Assign 67
+St R2
+HALT
