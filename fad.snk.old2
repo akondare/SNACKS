@@ -1,20 +1,3 @@
-Clr R0
-Clr R1
-Clr R2
-Clr R3
-Clr R4
-Clr R5
-Clr R6
-Clr R7
-Clr R8
-Clr R9
-Clr R10
-Clr R11
-Clr R12
-Clr R13
-Clr R14
-Clr R15
-
 # Load MSB's and LSB's of float into R2 and R3
 Assign 127
 Inc R1
@@ -40,24 +23,19 @@ Assign 3
 Sr R7
 Sr R8
 
-# put sign and exp in 6 and 7 and 14 and 15
-Assign R2
-Set r6
-set r7
-Assign R4
-Set r14
-set r15
-Assign 7
-Sr R6
-Sl r6
-Sr R14
-Sl r14
-Assign 1
-Sl R7
-Sl R15
-Assign 3
-Sr R7
-Sr R15
+# get R9:(E1-E2) and R10:(E2-E1), if R9>R10: EXP(A) greater, etc
+Assign R7
+Set R9
+Assign R8
+Set R10
+Assign R8
+Sub R9
+Assign R7
+Sub R10
+Assign R9
+Set R12
+Assign R10
+Sub R12
 
 # clear Sign and E and restore Hidden bit of R2 and R4
 Assign 6
@@ -69,34 +47,17 @@ Assign 4
 Or R2
 Or R4
 
-
-# get R9:(E1-E2) and R10:(E2-E1), if R9>R10: EXP(A) greater, etc
-Assign R7
-Set R9
-Assign R15
-Set R10
-Assign R15
-Sub R9
-Assign R7
-Sub R10
-Assign R9
-Set R12
-Assign R10
-Sub R12
-
+# skip to step 3 as E's are equal
+Assign 57
+Bz R12
 
 # if sign = 0, R9 is positive meaning E1 > E2 
 Assign 7
 Sr R12
-Assign 19
+Assign 13
 Bz R12
 
 # switch registers and use E2-E1 shift value
-Assign r14
-Set r6
-Assign r15
-Set r7
-
 Assign r2
 Set r10
 Assign r3
@@ -112,70 +73,52 @@ Set r5
 Assign r10
 Set r9
 
-# if r9 > 8, do first shift to get it below 8
-Assign r9
-Set r10
-Assign 9
-Sub R10
+# put sign and exp in 6 and 7
+Assign R2
+Set r6
+set r7
 Assign 7
-Sr R10
-Clr r12
-Assign 22
-BNZ R10
+Sr R6
+Sl r6
+Assign 1
+Sl R7
+Assign 3
+Sr R7
 
-Clr R11
-Assign r9
-Set r10
-Assign 8
-Sub r10
-
-#shift right by r10
-Assign r4
-Set r11
-Assign r5
-Set r12
-
-Assign r10
-Sr r4
-Sr r5
-
-Assign 8
-Set r13
-Assign r10
-Sub r13
-
-Assign r13
-Sl r11
-Sl r12
-
-Assign r11
-Or r5
-
-
-#shift right by R9
-Assign 17
+#loop through r4-r5 and shift right by R9
+Clr r10
+Clr r11
+Assign 25
 BZ R9
 
 Assign r4
-Set r11
+Set r12
 Assign r5
-Set r10
+Set r13
+Assign r10
+Set r14
 
-Assign r9
+Assign 1
 Sr r4
 Sr r5
+Sr r10
+Sr r11
 
-Assign 8
-Set r13
-Assign r9
-Sub r13
+Assign 7
+Sl r12
+Sl r13
+Sl r14
 
-Assign r13
-Sl r11
-Sl r10
-
-Assign r11
+Assign r12
 Or r5
+Assign r13
+Or r10
+Assign r14
+Or r11
+
+Dec r9
+Assign 25
+Jmp r15
 
 #### Step 3 - Add mantissas ###
 Assign R5
@@ -197,7 +140,7 @@ Assign 7
 Sr R9
 Assign 1
 Sl R10
-Assign r12
+Assign r11
 Or R10
 
 # skip rounding if R bit is 0

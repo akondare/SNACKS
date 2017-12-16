@@ -3,7 +3,7 @@
 module top_tb();
 
 bit clk, reset = 1;
-logic [1:0] pMux = 2'b01;
+logic [1:0] pMux = 2'b10;
 wire done;	  // output from design
 
 top t1(		  // our design itself
@@ -23,6 +23,11 @@ initial begin
 
   t1.dm1.my_memory[64] = 8'b11101010;
   t1.dm1.my_memory[65] = 8'b00000100;
+
+  t1.dm1.my_memory[128] = 8'b01111010;
+  t1.dm1.my_memory[129] = 8'b11101000;
+  t1.dm1.my_memory[130] = 8'b01001110;
+  t1.dm1.my_memory[131] = 8'b11000101;
 
   #20ns reset = 0;
   #5000ns $display("I give up."); 
