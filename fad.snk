@@ -1,3 +1,4 @@
+# comment
 Clr R0
 Clr R1
 Clr R2
@@ -96,6 +97,8 @@ Assign r14
 Set r6
 Assign r15
 Set r7
+Assign r10
+Set r9
 
 Assign r2
 Set r10
@@ -109,8 +112,6 @@ Assign r10
 Set r4
 Assign r11
 Set r5
-Assign r10
-Set r9
 
 # if r9 > 8, do first shift to get it below 8
 Assign r9
@@ -120,7 +121,7 @@ Sub R10
 Assign 7
 Sr R10
 Clr r12
-Assign 22
+Assign 24
 BNZ R10
 
 Clr R11
@@ -151,6 +152,8 @@ Sl r12
 Assign r11
 Or r5
 
+Assign 8
+Set R9
 
 #shift right by R9
 Assign 17

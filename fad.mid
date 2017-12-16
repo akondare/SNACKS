@@ -80,6 +80,8 @@ Assign r14
 Set r6
 Assign r15
 Set r7
+Assign r10
+Set r9
 Assign r2
 Set r10
 Assign r3
@@ -92,8 +94,6 @@ Assign r10
 Set r4
 Assign r11
 Set r5
-Assign r10
-Set r9
 Assign r9
 Set r10
 Assign 9
@@ -101,7 +101,7 @@ Sub R10
 Assign 7
 Sr R10
 Clr r12
-Assign 22
+Assign 24
 BNZ R10
 Clr R11
 Assign r9
@@ -124,6 +124,8 @@ Sl r11
 Sl r12
 Assign r11
 Or r5
+Assign 8
+Set R9
 Assign 17
 BZ R9
 Assign r4
